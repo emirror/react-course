@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
 import { AppContext } from '../App'
 
-function Items(props) {
+function DoneItems(props) {
     let [status, SetStatus] = useState(false);
-    const { getId, getStatus } = React.useContext(AppContext)
+
+    const { getStatus } = React.useContext(AppContext)
+    
     function checkBoxStatus(e) {
-        SetStatus(e.target.checked)
+        SetStatus(e.target.Done)
         getStatus(props.id, status)
         console.log(status)
 
     }
-
-
     return (
         <li>
             <span>{props.text}</span>
-            <span onClick={getId.bind(this, props.id)}>&nbps;X</span>
             <span>
-                <input type="checkbox" onChange={checkBoxStatus} />
+                <input type="checkbox" onChange={checkBoxStatus} defaultChecked/>
             </span>
         </li>
     )
 }
 
-export default Items;
+
+
+export default DoneItems;
